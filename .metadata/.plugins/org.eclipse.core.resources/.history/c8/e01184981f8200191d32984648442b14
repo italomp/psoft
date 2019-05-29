@@ -1,0 +1,31 @@
+package com.example.demo;
+
+import java.time.LocalTime;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@Controller
+public class Controlador{
+		
+//	@GetMapping("/hello")
+//	public String hello(@RequestParam(name = "name", required = false,
+//			defaultValue = "World") String name, Model model) {
+//		model.addAttribute("name", name);
+//		if(LocalTime.getHour() > 0 ) {
+//			
+//		};
+//	}
+	
+	public static void main(String[] args) {
+		LocalTime hora = LocalTime.of(0, 0);
+		
+		System.out.println(LocalTime.now());
+		System.out.println(hora.toString());
+		System.out.println(LocalTime.now().compareTo(hora) < 0);
+	}
+}
