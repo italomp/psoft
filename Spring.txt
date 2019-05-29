@@ -1,0 +1,103 @@
+SPRING
+
+> Instalar spring 3 e usar dependência web no projeto.
+
+> iniciar projeto
+	new spring starter project
+
+> @SpringBootAplication (MAIN)
+	A classe marcada com isso, sobe o servidor spring
+
+> resources\application.properties
+	Arquivo de configuração do projeto.
+	
+	Usado para interair com o BD.
+
+> pom.xml
+	Contém todas as informações sobre o projeto, assim como as dependências escolhidas.
+
+	Caso precise adicionar nova dependência, basta adicioná-la aqui.
+
+> colocar servidor pra rodar
+	run as > Spring Boot App
+
+> @Controller e @RestController
+	@Controller
+		retorna um template que vai ser carregado na view.
+
+		IMPORTANTE: Se eu for retornar um template, tenho que colocar "return nomeTemplate", onde nomeTemplate
+		é o nome do template (arquivo html) que está em resources/templates
+
+	@RestController
+		retorna um JSON (ou XML...) que vai ser carregado na view. (Não recarrego toda a view, apenas o json novo)
+
+		Combinação de @Controller com @ResponseBody
+		Retorna um JSON um XML...
+
+		Alternativa:
+		Usar a notação @Controller na classe e @ResponseBody nos métodos que desejo retornar o JSON
+
+		IMPORTANTE: Se minha API inteira retorna JSON, uso @RestControler. Menos anotações na classe.
+
+			    obs: Não precisamos fazer a conversão dos objetos em JSON, o framework faz isso pra gente.
+
+> Separar todas as camadas do projeto em pacotes (boa prática)
+	ex: pacote para controllers, serviços, models
+
+> GetMapping("/minha_rota")
+	cria uma rota para ser acessada por um HTTP GET
+
+	Rota: caminho para chegar ao recurso.
+
+	Recurso: informação gerenciada pelo sistema.
+
+	
+> @RequestParam(name="name", required=false, defaultValue="World")
+	recebe um nome como parametro e mostra na URL
+
+	ex: servidor:8080/hello?name=Raquel
+
+> Model
+	modelo que guarda valores de certos atributos
+
+	dar nome ao model
+	model.addAttribute("name", name);
+
+	IMPORTANTE: adicionamos ao model pares (chave, valor), onde valor é um objeto.
+	ex: model.addAttribute("name", name);
+	    model.addAttribute("hora", LocalTime.now());
+
+> Error controler
+	o controler precisa impementar a interface "ErrorController"
+
+> Dependência Web
+	com essa dependência conseguimos usar o servidor Tomcat que é um servidor web java e
+	utilizamos ele para subir a nossa aplicação.
+
+> Depentência para o servidor atualizar sozinho quando houver mudanças no back (devtools)
+	<dependency>
+   
+		<groupId>org.springframework.boot</groupId>
+   
+		<artifactId>spring-boot-devtools</artifactId>
+   
+		<optional>true</optional>
+
+	</dependency>
+
+> Dependência para permitir CRUD (Thymeleaf)
+	<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency> 
+
+
+
+
+
+
+
+
+
+
+
