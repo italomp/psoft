@@ -1,6 +1,12 @@
 SPRING
 
 > Instalar spring 3 e usar dependência web no projeto.
+	
+	Thymeleaf, Web, JPA, H2, devTools (ou Postgree ou MySQL).
+	
+	obs: H2 é um banco em memória. Se fizer besteira, basta reiniciar a plicação.
+	versão do spring 2.1.4
+	
 
 > iniciar projeto
 	new spring starter project
@@ -91,6 +97,42 @@ SPRING
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency> 
 
+> @ComponentScan()
+	A classe main marcada com @SpringBootApplication contém algumas marcações, entre elas
+	@ComponentScan() que diz onde os controllers estão. Por default ela mostra que os 
+	controllers estão no mesmo pacote do main (@SpringBootApplication).
+	Se eles estiverem noutro pacote, preciso especificar:
+		@ComponentScan({"com.my.package.first","com.my.package.second"})
+
+	Existem outras formas. Essa acima é uma delas.
+
+> @Data
+	Com essa notação não preciso gerar gets e sets.
+	inseguro.
+
+> @Entity (import javax.persistence.Entity;)
+	Mapeia o objeto com o hibernate indicando que ele virará uma tabela no nosso banco.
+
+	preciso criar um construtor sem parâmetros e um com parâmetros.
+	O sem parâmetros é só para satisfazer o JPA.
+
+	Obrigatoriamente tenho que ter o @Data ou os gets e sets para que o JPA consiga
+	alterar os atributos da entidade.
+
+> @Id
+	marca uma variável como chave primária da relação (tabela)
+
+> @GeneratedValue(strategy = GenerationType.IDENTITY)
+	diz qeu o id é id representativo e único.
+	E o banco cria o id único para o objeto.  <- mas não é o valor da variável???
+
+> Dao
+	Um inferface onde descrevo como uma query deve ser feita.
+	Posso usar queries nativas em SQL e também posso utilizar diversas queries padrão
+	do JPA
+
+> @Repository
+	diz ao spring que essa interface será uma abstração para conexão com o BD.
 
 
 
