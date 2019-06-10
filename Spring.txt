@@ -28,6 +28,12 @@ SPRING
 	run as > Spring Boot App
 
 > @Controller e @RestController
+
+	O controller é quem vai receber a requisição do cliente, resolver ou delegar para quem sabe resolver
+	aquela requisição.
+
+	Usamos diferentes controllers para gerenciar as requisições a diferentes recursos, de forma independente.
+
 	@Controller
 		retorna um template que vai ser carregado na view.
 
@@ -57,6 +63,41 @@ SPRING
 
 	Recurso: informação gerenciada pelo sistema.
 
+> @RequestMapping({"rota"})
+	posso usar o mesmo controller para diferentes rotas?
+
+	"v1" é uma convenção muito usada em APIs nas quais queremos fazer upgrades mas temos que manter versões antigas
+	para garantir compatibilidade om serviços que já usam essa rota.
+
+	v1 (versão 1), v2 (versão 2), v3 (versão 3)...
+
+	lembrar dos princípios HTTP: não faz sentido termos rotas do tipo: /criarProduto, /deletarProduto...
+
+> ResponseEntity
+	uma classe wrapper que representa o corpo de um response e seu status.
+
+	pelo que vi, ao invés de trabalhar direto cm objetos, vou usar ResponseEntity.
+	Nela posso encapsular objeto e status da response.
+
+> @PathVariable
+	indica que ese método espera da request, o parâmetro id.
+
+> @PostMapping
+	diz que qualquer request POST que tiver a URI do meu controller + "/" deve chamar o método create.
+
+> @ResponseBody
+	diz ao spring que aquele método espera um tipo específico de objeto
+	ex: method(@ResponseBody Product product)
+
+> @DeleteMapping
+	diz para o spring que qualquer URI que tenha a rota do controller + "/{id}" deve chamar o método delete (
+	que no caso é o método que tem a notação) 
+
+> @PutMapping
+	diz ao spring que qaulquer resquest PUT com URI do controller + "/" deve chamar o método update 
+	(que no caso é o método que que tem a notação).
+
+	Pelo que entendi o PUT atualiza todo o repositório, pois não recebe id no URI.
 	
 > @RequestParam(name="name", required=false, defaultValue="World")
 	recebe um nome como parametro e mostra na URL
@@ -134,10 +175,24 @@ SPRING
 > @Repository
 	diz ao spring que essa interface será uma abstração para conexão com o BD.
 
+> @Service
+	o service é responsável por maipular o DAO de um objeto, ou seja, o repositório desse objeto
 
+> Exceptions
+	Springboot possui um wrapper que permite retornar exceptions para o cliente, caso a requisição
+	não saia como esperada.
 
+	criar o pacote das exceções fora do pacote rest.
 
+> @ControllerAdvice
+	diz ao spring boot que essa classe é um handler de controle de toda a aplicação.	
 
+	handler: um processo pré configurado que é executado quando uma ação acontece.
+
+> RestExceptionHandler (é uma classe)
+	essa classe irá capturar todas as exceções das classes da api, marcadas com @RequestMapping (todas as 
+	exceções da API lançadas pelos controllers).
+	
 
 
 
