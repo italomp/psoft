@@ -1,5 +1,6 @@
 package com.lab2.controller;
 
+import org.hibernate.engine.transaction.jta.platform.internal.SynchronizationRegistryBasedSynchronizationStrategy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,7 +31,6 @@ public class ProductController {
 	@ResponseBody  // acho que não preciso dessa anotação, pois estah inclusa no 
 	public ResponseEntity<Product> findById(@PathVariable long id) {
 		Product product = this.productService.findById(id);
-		
 		if(product == null) {
 			throw new ProductNotFoundException("Product not found");
 		}	
@@ -41,7 +41,6 @@ public class ProductController {
 	@ResponseBody
 	public ResponseEntity<Product> create(@RequestBody Product product) {
 		Product newProduct = this.productService.create(product);
-		
 		if(product == null) {
 			throw new InternalError("Something went wrong");
 		}

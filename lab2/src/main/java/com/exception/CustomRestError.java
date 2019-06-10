@@ -3,9 +3,9 @@ package com.exception;
 import java.util.Date;
 
 public class CustomRestError extends RuntimeException{
-	Date date;
-	String message;
-	String requestDescription;
+	private Date date;
+	private String message;
+	private String requestDescription;
 	
 	public CustomRestError(Date date, String message, 
 			String requestDescription) {

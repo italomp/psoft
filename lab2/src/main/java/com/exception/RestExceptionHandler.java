@@ -19,11 +19,11 @@ public class RestExceptionHandler {
 		return new ResponseEntity<>(errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@ExceptionHandler(Exception.class)
+	@ExceptionHandler(InternalError.class)
 	public ResponseEntity<CustomRestError> notFound(Exception ex, WebRequest request){
 		CustomRestError messageError = new CustomRestError(new Date(), ex.getMessage(),
 				request.getDescription(false));
-		return new ResponseEntity<>(messageError, new HttpHeaders(), HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(messageError, new HttpHeaders(), HttpStatus.ACCEPTED);
 	}
 	
 	
