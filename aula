@@ -1,0 +1,8 @@
+> H2
+	> dizer o nome do banco na URL e colocar o nome do bd no browser ao trentar acessá-lo.
+	> precisamos dizer ao spring que o banco salva os dados quando a api para de rodar(persistência).
+
+> consigo acessar o banco pelo browser, pelo endereço: localhost:8080/api/h2
+	lembrando que a palavra api na url "api"
+
+> baixar postman para testar requests
